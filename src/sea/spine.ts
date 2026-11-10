@@ -10,8 +10,8 @@
  * [0, 1] painted a half-disc in front of every snout (reef mockup, round R3). A cell whose middle misses is still filled
  * when two of four points near its corners hit, which keeps thin fins and tails from breaking up.
  */
-import { angDiff, clamp } from '../math';
-import type { CellGrid } from './cells';
+import { angDiff, clamp } from '../math.js';
+import type { CellGrid } from './cells.js';
 
 export interface Spine {
   /** x0, y0, x1, y1 … from the snout, in units of the height. */
@@ -81,7 +81,10 @@ export function probeSpine(s: Spine, px: number, py: number): Probe {
     if (d < p.best) {
       const len = Math.sqrt(vv);
       p.best = d;
-      p.along = (k + (k === 0 ? Math.min(raw, 1) : k === segs - 1 ? Math.max(raw, 0) : u)) / segs;
+      // the first segment runs on ahead of the snout, the last on past the tail (both, for a one-segment spine)
+      const first = k === 0;
+      const last = k === segs - 1;
+      p.along = (k + (first && last ? raw : first ? Math.min(raw, 1) : last ? Math.max(raw, 0) : u)) / segs;
       p.across = (vx * (py - ay) - vy * (px - ax)) / len / s.L;
       p.nx = -vy / len;
       p.ny = vx / len;
@@ -113,7 +116,7 @@ export interface SpineCell {
 
 /**
  * Every cell the creature covers. `reach` = the widest part's half-width in units of L (fins, a hammer's wing).
- * `halfWidth(along)` (optional) lets a cell whose middle misses be skipped early when even its nearest edge cannot hit.
+ * A cell whose middle misses is skipped early when the shape is empty even half a cell nearer the spine.
  */
 export function rasterSpine(s: Spine, g: CellGrid, shape: ShapeFn, reach: number): SpineCell[] {
   const n = s.nodes;

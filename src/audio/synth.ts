@@ -5,7 +5,7 @@
  * built per hit from oscillators, a shared noise buffer, filters and envelopes, then let go; nothing is kept playing.
  * A compressor on the master keeps a busy drop from clipping; a generated impulse gives a small room.
  */
-import { hz } from '../score/score';
+import { hz } from '../score/score.js';
 
 export class Synth {
   readonly ctx: AudioContext;

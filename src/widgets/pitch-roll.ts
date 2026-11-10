@@ -5,8 +5,8 @@
  * onsets, chord tones sparkle rather than sit as solid bars, and a little noise keeps it alive. Energy → a glyph from a
  * sparse-to-dense ramp. The current chord's tones are labelled on the left.
  */
-import { clamp, esc } from '../math';
-import { PITCH_CLASSES } from '../score/score';
+import { clamp, esc } from '../math.js';
+import { PITCH_CLASSES } from '../score/score.js';
 
 export interface RollInput {
   /** The bass note (MIDI) and how hard it starts on this step (0 = none). */
@@ -62,7 +62,8 @@ export class PitchRoll {
       let line = `${tones.has(pc) && f.on ? `<span class="lab">${name}</span>` : name} │`;
       for (const col of this.cols) {
         const v = col[pc];
-        line += v < 0.08 ? ' ' : esc(this.ramp[clamp(Math.floor(v * 9.99), 1, this.ramp.length - 1)]);
+        line +=
+          v < 0.08 ? ' ' : esc(this.ramp[clamp(Math.floor(v * (this.ramp.length - 0.001)), 1, this.ramp.length - 1)]);
       }
       return `${line}│`;
     });

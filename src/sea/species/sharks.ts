@@ -2,8 +2,8 @@
  * A species pack: three sharks seen from above (a hammerhead, a blacktip, a zebra shark), as shape functions for
  * `rasterSpine` and a tile shader. Content, not a pattern — a scene brings its own species the same way.
  */
-import { clamp, hash2, lerp, mix, type RGB, rgb } from '../../math';
-import { glyphFor, litAt, PART, type ShapeFn, type SpineCell, sunDot } from '../spine';
+import { clamp, hash2, lerp, mix, type RGB, rgb } from '../../math.js';
+import { glyphFor, litAt, PART, type ShapeFn, type SpineCell, sunDot } from '../spine.js';
 
 export interface SharkKind {
   name: 'hammerhead' | 'blacktip' | 'zebra';

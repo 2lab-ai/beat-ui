@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { arrange, eighthsToPattern, hz, isHit, midi, sectionStarts } from './score';
+import { arrange, eighthsToPattern, hz, isHit, midi, sectionStarts } from './score.js';
 
 describe('score', () => {
   const sectionOf = arrange({

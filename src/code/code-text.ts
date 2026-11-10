@@ -6,7 +6,7 @@
  * a lookup, never a parse of the text. A slider's number is a single placeholder character (`SLIDER`) so it can glide
  * to a new value without retyping, and so token ranges before it never shift.
  */
-import type { Pattern } from '../score/score';
+import type { Pattern } from '../score/score.js';
 
 /** The placeholder a slider's number is drawn into. One character: typing and ranges count it once. */
 export const SLIDER = '';

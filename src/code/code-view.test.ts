@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { plain } from './code-text';
-import { CodeView } from './code-view';
-import { Typewriter } from './typewriter';
+import { plain } from './code-text.js';
+import { CodeView } from './code-view.js';
+import { Typewriter } from './typewriter.js';
 
 describe('CodeView', () => {
   it('builds the layout and writes only what changed', () => {

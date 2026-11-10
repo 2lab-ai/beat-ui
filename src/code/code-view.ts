@@ -5,9 +5,9 @@
  * renders only when what it shows changed (a signature of its text, active tokens, slider values, caret and flash), so
  * a panel can be rendered every frame without rewriting the DOM every frame.
  */
-import { activeTokens } from './code-text';
-import { DEFAULT_CLASSES, type RenderClasses, renderLine } from './render';
-import type { Typewriter } from './typewriter';
+import { activeTokens } from './code-text.js';
+import { DEFAULT_CLASSES, type RenderClasses, renderLine } from './render.js';
+import type { Typewriter } from './typewriter.js';
 
 /** A line id, `'|'` for a gap, or `'[name]'` for a widget slot (an element the host fills). */
 export type LayoutItem = string;

@@ -84,6 +84,7 @@ export class BeatClock<E extends Timed> {
 
   /** Start booking now (+ `startDelay`), with a timer. */
   start(): void {
+    this.stop(); // a second start() must not leave the first timer booking steps
     this.startAt(this.source.currentTime + this.startDelay);
     this.timer = setInterval(() => this.pump(), this.interval);
   }
@@ -103,7 +104,12 @@ export class BeatClock<E extends Timed> {
 
   /** Book every step that starts before `now + lookahead`. Safe to call any time; books each step once. */
   pump(now = this.source.currentTime): void {
-    const push = (e: E) => this.queue.push(e);
+    // kept in time order whatever order steps push in, so drain() can stop at the first event not yet due
+    const push = (e: E) => {
+      let i = this.queue.length;
+      while (i > 0 && this.queue[i - 1].t > e.t) i--;
+      this.queue.splice(i, 0, e);
+    };
     while (this.timeOf(this.n) < now + this.lookahead) {
       const n = this.n;
       this.n++;
@@ -111,7 +117,7 @@ export class BeatClock<E extends Timed> {
     }
   }
 
-  /** The events now due (`t <= now`), in booking order, removed from the queue. */
+  /** The events now due (`t <= now`), in time order (booking order among equal times), removed from the queue. */
   drain(now = this.source.currentTime): E[] {
     let i = 0;
     while (i < this.queue.length && this.queue[i].t <= now) i++;

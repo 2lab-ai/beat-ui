@@ -5,8 +5,8 @@
  * solid column across every row, and a footer says where we are. Two characters per step so blocks read as squares in
  * a monospace font.
  */
-import { esc } from '../math';
-import type { Pattern } from '../score/score';
+import { esc } from '../math.js';
+import type { Pattern } from '../score/score.js';
 
 export interface GridRow {
   label: string;

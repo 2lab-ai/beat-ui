@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { line } from './code-text';
-import { renderLine } from './render';
-import { Typewriter } from './typewriter';
+import { line } from './code-text.js';
+import { renderLine } from './render.js';
+import { Typewriter } from './typewriter.js';
 
 const typed = (l: ReturnType<ReturnType<typeof line>['build']>) => {
   const tw = new Typewriter([l.id]);
@@ -36,5 +36,14 @@ describe('renderLine', () => {
     expect(renderLine(l, [], -1)).toContain('<span class="cm">// drop</span>');
     const s = typed(line('y').slider(1550, 100, 4000).build());
     expect(renderLine(s, [], -1)).toContain('slider(1550, 100, 4000)');
+  });
+});
+
+describe('renderLine mid-edit (code review, PR #2)', () => {
+  it('draws the caret on a newline and keeps underlines off a line still being typed', () => {
+    const l = typed(line('x').t('kick').wrap().t('.lpf(').slider(500, 100, 4000).t(')').build());
+    expect(renderLine(l, [], 4)).toContain('<span class="caret"> </span>');
+    const half = { ...l, typed: l.typed.slice(0, 12) };
+    expect(renderLine(half, [], -1)).not.toContain('class="sl"');
   });
 });

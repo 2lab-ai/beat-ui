@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { line, plain } from './code-text';
-import { nextKey, Typewriter } from './typewriter';
+import { line, plain } from './code-text.js';
+import { nextKey, Typewriter } from './typewriter.js';
 
 const run = (from: string, to: string) => {
   let typed = from;
@@ -76,5 +76,16 @@ describe('Typewriter', () => {
     expect(tw.line('bass').sliders[0]).toBeLessThan(2600);
     for (let i = 0; i < 40; i++) tw.update(0.1);
     expect(tw.line('bass').sliders[0]).toBeCloseTo(2600, 0);
+  });
+});
+
+describe('Typewriter caret (code review, PR #2)', () => {
+  it('moves the caret to the next line as soon as the typist moves there', () => {
+    const tw = new Typewriter(['a', 'b'], { breath: 0.5 });
+    tw.set([plain('a', 'abcdefghijklmnopqrstu'), plain('b', 'xyz')]);
+    for (let i = 0; i < 40 && tw.line('a').typed !== tw.line('a').target; i++) tw.update(0.02);
+    tw.update(0.02); // breathing: nothing typed, but b is next
+    expect(tw.current).toBe('b');
+    expect(tw.caretAt).toBe(0);
   });
 });

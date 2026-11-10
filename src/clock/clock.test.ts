@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { BeatClock, type StepInfo } from './clock';
+import { BeatClock, type StepInfo } from './clock.js';
 
 const fake = () => ({ currentTime: 0 });
 
@@ -43,5 +43,34 @@ describe('BeatClock', () => {
     expect(due.map((e) => e.n)).toEqual([0, 1]);
     expect(clock.drain(0.2)).toEqual([]);
     expect(clock.drain(0.3)[0].n).toBe(2);
+  });
+});
+
+describe('BeatClock (code review, PR #2)', () => {
+  it('keeps one timer when start() is called twice', async () => {
+    const { vi } = await import('vitest');
+    vi.useFakeTimers();
+    const src = { currentTime: 0 };
+    let booked = 0;
+    const clock = new BeatClock(src, { bpm: 140 }, () => booked++);
+    clock.start();
+    clock.start();
+    clock.stop();
+    const before = booked;
+    src.currentTime = 10;
+    vi.advanceTimersByTime(1000);
+    expect(booked).toBe(before);
+    vi.useRealTimers();
+  });
+
+  it('drains an event that is due even when a later step pushed an earlier time', () => {
+    const src = { currentTime: 0 };
+    const clock = new BeatClock<{ t: number; id: string }>(src, { bpm: 140, lookahead: 0.3 }, (s, push) => {
+      if (s.n === 0) push({ t: s.t + 0.2, id: 'late' });
+      if (s.n === 1) push({ t: s.t, id: 'step1' });
+    });
+    clock.startAt(0);
+    expect(clock.drain(0.15).map((e) => e.id)).toEqual(['step1']);
+    expect(clock.drain(0.25).map((e) => e.id)).toEqual(['late']);
   });
 });

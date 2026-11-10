@@ -5,8 +5,8 @@
  * flee from any predator's head and front body, scatter outward on a drop, and come back from the edge a while after
  * being caught. The ball's centre is the centroid of the fish at home — what hunters charge.
  */
-import { clamp, TAU } from '../math';
-import type { Spine } from './spine';
+import { clamp, TAU } from '../math.js';
+import type { Spine } from './spine.js';
 
 export interface Fish {
   x: number;
@@ -20,6 +20,8 @@ export interface Fish {
   back: number;
   /** 0 … 1: how scared. */
   alarm: number;
+  /** Swimming back in from the edge after being caught; not part of the ball until it is near home. */
+  returning: boolean;
   /** Which way round it swims. */
   dir: 1 | -1;
 }
@@ -52,6 +54,7 @@ export function makeSwarm(n: number, home: Point, rand: () => number): Fish[] {
       alive: true,
       back: 0,
       alarm: 0,
+      returning: false,
       dir: i % 5 === 0 ? -1 : 1,
     };
   });
@@ -68,6 +71,7 @@ export function swimSwarm(fish: Fish[], dt: number, w: SwarmWorld): void {
         f.vx = 0;
         f.vy = 0;
         f.alive = true;
+        f.returning = true;
         f.back = 0;
         f.alarm = 0;
       }
@@ -79,13 +83,14 @@ export function swimSwarm(fish: Fish[], dt: number, w: SwarmWorld): void {
     const hy = f.y - w.home.y;
     const hd = Math.hypot(hx, hy) || 1;
     const calm = 1 - f.alarm;
+    if (f.returning && hd < f.r * 1.5) f.returning = false;
     const off = hd - f.r * tight;
     ax -= (hx / hd) * off * 5 * (0.3 + calm);
     ay -= (hy / hd) * off * 5 * (0.3 + calm);
     ax += ((-hy / hd) * 0.12 * f.dir - f.vx) * 1.6 * calm;
     ay += ((hx / hd) * 0.12 * f.dir - f.vy) * 1.6 * calm;
     for (const p of w.predators)
-      for (let k = 0; k < 8; k += 2) {
+      for (let k = 0; k < Math.min(8, p.nodes.length / 2); k += 2) {
         const dx = f.x - p.nodes[2 * k];
         const dy = f.y - p.nodes[2 * k + 1];
         const d = Math.hypot(dx, dy);
@@ -127,13 +132,13 @@ export function startleSwarm(fish: Fish[], amount = 0.25): void {
   for (const f of fish) f.alarm = Math.max(f.alarm, amount);
 }
 
-/** The ball: centroid of the fish at home, or null when fewer than `minN` are. */
+/** The ball: centroid of the fish at home (alive, not swimming back in), or null when fewer than `minN` are. */
 export function swarmCenter(fish: readonly Fish[], minN = 6): (Point & { n: number }) | null {
   let n = 0;
   let x = 0;
   let y = 0;
   for (const f of fish)
-    if (f.alive && f.back <= 0) {
+    if (f.alive && !f.returning) {
       x += f.x;
       y += f.y;
       n++;

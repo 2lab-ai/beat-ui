@@ -59,7 +59,11 @@ for (const e of clock.drain(synth.ctx.currentTime)) handle(e);
 
 Rules:
 
-- push events in time order (at the step's time or later); `drain` stops at the first event that is not due
+- push events at any time from the step's own on; the queue keeps them in time order, so `drain` can stop at the first
+  event that is not due
+- `start()` twice is safe: the second call stops the first timer
+- create the AudioContext (`new Synth()`) in a click or key handler: before a user gesture the browser keeps it
+  suspended, its clock stays at 0 and nothing is ever due
 - pause by suspending the AudioContext — the clock stops with it, and nothing needs to be rescheduled
 - `startAt(t0)` and `pump(now)` drive the clock without a timer, which is how the tests run it
 
@@ -109,6 +113,8 @@ Rules, each learnt the hard way:
   panel can render every frame
 - `renderLine` opens every range that starts at a character before it draws the caret there. Drawing the caret first
   left a range unopened and its closing tag unmatched (found while extracting)
+- ranges (tokens, underlines) belong to the target text, so they are drawn only once a line is fully typed
+- when the typist moves to the next line, the caret moves to that line's edit point at once (code review, PR #2)
 
 ## P5 — The beat grid
 
@@ -156,7 +162,8 @@ Rules:
 
 Shape: small fish orbit a home point at their own radius (half that radius while a breakdown gathers them), flee from
 any predator's head, scatter outward on a drop, and swim back in from the edge a few seconds after being caught. The
-ball's centre is the centroid of the fish at home.
+ball's centre is the centroid of the fish at home — a fish still swimming back in from the edge does not count until it
+is near home, or it would drag the centre towards the edge (code review, PR #2).
 
 ## P10 — The drop, and a hunt that answers it
 
@@ -171,6 +178,8 @@ Rules:
   left all three sharks short of a ball that had already scattered (round R4)
 - the pass is measured along the path the snout swept during the step, not only where it ended. At 20 fps a charging
   shark moves about 0.02 a frame
+- a hunter steers at where its prey will be (0.3 s ahead) but catches it only at the fish itself. Testing the catch at
+  the aim point made fish vanish about 14 cells away from the shark (code review, PR #2)
 - `armHunters` records where each hunter started and how close it came, which is what the receipts report
 
 ## P11 — A drum machine in plain WebAudio
@@ -201,14 +210,17 @@ The library-built reef passes the mockup's six scenarios (`docs/receipts/reef/me
 
 - S1 first screen: 540 × 960 stage, 3 sharks, `// listening: nothing yet`
 - S2 the first line lands in bar 1
-- S3 breakdown: the bait ball pulls in by 46% (bar 7) and 31% (bar 8) against the groove
-- S4 drop: flash 0.82, speed ×6.7 to ×8.1, all three sharks pass within 0.032 of the ball, the ball scatters ×2.87
-- S5 D key: flash 0 → 0.86, two sharks pass within 0.032
-- S6 Z key: the code fades out and the float moves to (0.28, 0.58)
+- S3 breakdown: the bait ball pulls in by 23% (bar 7) and 38% (bar 8) against the groove
+- S4 drop: flash 0.78, speed ×6.6 to ×7.1, two of three sharks cut through the ball (passes at 0.039), the ball scatters ×3.55
+- S5 D key: flash 0 → 0.74, all three sharks cut through the ball
+- S6 Z key: the code fades out and the float moves to (0.28, 0.56)
 - minimal: the code types to `// groove`, the playhead moves, bar 4 after 6.5 s
+
+A pass is recorded the moment the swept path comes within 0.04 of the ball — the hunter then stops charging and hunts —
+so "closest" in the receipts reads just under 0.04 for every shark that cut through.
 
 `docs/receipts/reef/parity-mockup-vs-kit.jpg` puts the mockup's receipts beside the library's for the same scenarios.
 
 S4 is the least stable scenario. One run on the loaded machine, before the pass was measured along the swept path, got 1
-of 3 sharks within 0.04; the three runs since got 3 of 3. Measuring the swept path can move a reading by only about 0.01,
+of 3 sharks through the ball; the four runs since got 3, 3, 3 and 2 of 3. Measuring the swept path can move a reading by only about 0.01,
 so part of that difference is chance: re-measure S4 first when the hunt changes.

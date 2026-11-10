@@ -9,7 +9,7 @@
  * Its clock is real elapsed time (capped at `maxDt`), not the physics step — a slow frame must not make the code fall
  * a section behind the sound (found in the reef mockup's receipts, round R4).
  */
-import type { CodeLine, Range, Token } from './code-text';
+import type { CodeLine, Range, Token } from './code-text.js';
 
 export interface TypewriterOptions {
   /** Characters per second while typing. */
@@ -86,6 +86,21 @@ export function nextKey(typed: string, target: string, tail: number | null): Key
     kind: ch === ' ' || ch === '\n' ? 'space' : 'add',
     tail: q,
   };
+}
+
+/** Where the next keystroke of an edit lands (the end of the part kept before the tail). */
+export function editPoint(typed: string, target: string, tail: number | null): number {
+  let p = 0;
+  while (p < typed.length && p < target.length && typed[p] === target[p]) p++;
+  let q = tail ?? 0;
+  if (tail === null)
+    while (
+      q < typed.length - p &&
+      q < target.length - p &&
+      typed[typed.length - 1 - q] === target[target.length - 1 - q]
+    )
+      q++;
+  return typed.length - Math.min(q, typed.length - p);
 }
 
 export class Typewriter {
@@ -171,9 +186,10 @@ export class Typewriter {
         this.clock = 0;
         return;
       }
+      const l = this.line(id);
+      if (this.current !== id) this.caretAt = editPoint(l.typed, l.target, l.tail);
       this.current = id;
       if (this.clock < 1 / this.o.cps) return;
-      const l = this.line(id);
       const k = nextKey(l.typed, l.target, l.tail);
       l.typed = k.typed;
       l.tail = k.tail;

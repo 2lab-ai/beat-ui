@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { activeTokens, alternation, eighthValues, line, SLIDER, slots, steps16 } from './code-text';
+import { activeTokens, alternation, eighthValues, line, SLIDER, slots, steps16 } from './code-text.js';
 
 describe('code text with token ranges', () => {
   it('records each step token where its text is', () => {

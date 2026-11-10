@@ -7,7 +7,7 @@
  * The water and its faint grid are painted directly every frame. They are never cached in an offscreen canvas: in a
  * headless run that canvas once came up blank and every frame smeared over the last (reef mockup, round R4).
  */
-import { hash2, TAU } from '../math';
+import { hash2, TAU } from '../math.js';
 
 export interface CellGrid {
   /** Stage size in CSS px. */

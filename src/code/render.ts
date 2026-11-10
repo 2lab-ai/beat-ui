@@ -5,9 +5,9 @@
  * span on the next one, so a token or an underline never leaks across rows. The caret is drawn on the character it sits
  * on (inside the line while editing the middle), or after the last one.
  */
-import { esc } from '../math';
-import { SLIDER } from './code-text';
-import type { LineState } from './typewriter';
+import { esc } from '../math.js';
+import { SLIDER } from './code-text.js';
+import type { LineState } from './typewriter.js';
 
 export interface RenderClasses {
   row: string;
@@ -49,7 +49,8 @@ export function renderLine(
   const commentAt = isComment ? -1 : s.indexOf('//');
   const spans: Span[] = [
     ...(done ? active.map((i) => ({ a: l.tokens[i].a, b: l.tokens[i].b, cls: classes.token })) : []),
-    ...l.unders.map((u) => ({ a: u.a, b: u.b, cls: classes.under })),
+    // ranges belong to the target text: draw them only once it is typed, or they land on the wrong characters
+    ...(done ? l.unders.map((u) => ({ a: u.a, b: u.b, cls: classes.under })) : []),
   ];
   if (commentAt > 0) spans.push({ a: commentAt, b: s.length, cls: classes.comment });
   const rowOpen = `<span class="${classes.row}${isComment ? ` ${classes.comment}` : ''}${l.land > 0.05 ? ` ${classes.land}` : ''}">`;
@@ -77,6 +78,7 @@ export function renderLine(
       continue;
     }
     if (ch === '\n') {
+      if (i === caretAt) h += `<span class="${classes.caret}"> </span>`;
       h += `${'</span>'.repeat(open.length)}</span>${rowOpen}${open.map((sp) => `<span class="${sp.cls}">`).join('')}`;
       continue;
     }

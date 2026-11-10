@@ -10,9 +10,9 @@
  * for a fixed time left the sharks short of a ball that had already scattered (reef mockup, round R4): the goal is
  * "pass through it", not "charge for 1.3 s".
  */
-import { angDiff, clamp } from '../math';
-import { moveSpine, type Spine } from './spine';
-import { catchFish, type Fish, type Point } from './swarm';
+import { angDiff, clamp } from '../math.js';
+import { moveSpine, type Spine } from './spine.js';
+import { catchFish, type Fish, type Point } from './swarm.js';
 
 export class DropState {
   dropK = 0;
@@ -142,7 +142,7 @@ export function steerHunter(h: Hunter, w: HuntWorld): void {
     dx += (tx / d) * (1.6 + 2.4 * hunger);
     dy += (ty / d) * (1.6 + 2.4 * hunger);
     close = clamp(1 - d / (s.L * 0.9), 0, 1);
-    if (d < 0.025) {
+    if (Math.hypot(prey.x - x, prey.y - y) < 0.025) {
       catchFish(prey, w.rand);
       h.ate = t;
       h.prey = null;

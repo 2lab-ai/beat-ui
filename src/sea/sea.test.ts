@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { angDiff, seeded } from '../math';
-import { causticNet, cellGrid, NET_GLYPHS, ringCells } from './cells';
-import { armHunters, DropState, makeHunter, segmentDistance, steerHunter } from './hunt';
-import { SHARK_REACH, SHARKS, sharkShape } from './species/sharks';
-import { makeSpine, moveSpine, PART, probeSpine, rasterSpine } from './spine';
-import { makeSwarm, scatterSwarm, swarmCenter, swarmSpread, swimSwarm } from './swarm';
+import { angDiff, seeded } from '../math.js';
+import { causticNet, cellGrid, NET_GLYPHS, ringCells } from './cells.js';
+import { armHunters, DropState, makeHunter, segmentDistance, steerHunter } from './hunt.js';
+import { SHARK_REACH, SHARKS, sharkShape } from './species/sharks.js';
+import { makeSpine, moveSpine, PART, probeSpine, rasterSpine } from './spine.js';
+import { makeSwarm, scatterSwarm, swarmCenter, swarmSpread, swimSwarm } from './swarm.js';
 
 const grid = cellGrid(540, 960, 64);
 
@@ -166,5 +166,56 @@ describe('bait ball and hunt', () => {
     }
     expect(hunters.filter((h) => h.closest < 0.04).length).toBeGreaterThanOrEqual(2);
     for (const h of hunters) expect(h.topSpeed).toBeGreaterThan(h.speedAtDrop * 3);
+  });
+});
+
+describe('sea (code review, PR #2)', () => {
+  it('reads past the tail of a one-segment spine as along > 1', () => {
+    const s = makeSpine(0.3, 0.5, 0, 0.2, 2);
+    expect(probeSpine(s, 0.05, 0.5).along).toBeGreaterThan(1);
+    expect(probeSpine(s, 0.35, 0.5).along).toBeLessThan(0);
+  });
+
+  it('leaves fish swimming back in out of the ball', () => {
+    const home = { x: 0.3, y: 0.8 };
+    const fish = makeSwarm(10, home, seeded(2));
+    const c0 = swarmCenter(fish)!;
+    for (const f of fish.slice(0, 4)) Object.assign(f, { x: 0, y: 0.3, returning: true });
+    const c1 = swarmCenter(fish)!;
+    expect(c1.n).toBe(6);
+    expect(Math.hypot(c1.x - c0.x, c1.y - c0.y)).toBeLessThan(0.05);
+  });
+
+  it('catches prey at the fish, not at the point it aims for', () => {
+    const rand = seeded(5);
+    const h = makeHunter(0, makeSpine(0.3, 0.5, 0, 0.3), 0.2, 1);
+    // the aim point (fish + v·0.3) sits right on the snout; the fish itself is 0.12 away
+    const prey = {
+      x: 0.42,
+      y: 0.5,
+      vx: -0.4,
+      vy: 0,
+      r: 0.07,
+      alive: true,
+      back: 0,
+      alarm: 1,
+      returning: false,
+      dir: 1 as const,
+    };
+    h.prey = prey;
+    h.look = 99;
+    steerHunter(h, {
+      t: 0,
+      dt: 1 / 60,
+      hunger: 0.5,
+      ball: null,
+      fish: [prey],
+      hunters: [h],
+      float: { x: 0.3, y: 0.9 },
+      orbit: { x: 0.28, y: 0.6 },
+      A: 0.5625,
+      rand,
+    });
+    expect(prey.alive).toBe(true);
   });
 });

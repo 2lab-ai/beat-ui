@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { seeded } from '../math';
-import { midi } from '../score/score';
-import { beatGridHtml } from './beat-grid';
-import { PitchRoll } from './pitch-roll';
+import { seeded } from '../math.js';
+import { midi } from '../score/score.js';
+import { beatGridHtml } from './beat-grid.js';
+import { PitchRoll } from './pitch-roll.js';
 
 describe('beatGridHtml', () => {
   const rows = [
@@ -35,5 +35,13 @@ describe('PitchRoll', () => {
     expect(html.match(/class="lab"/g)?.length).toBe(3);
     expect(html).toContain('chord Abm');
     expect(new PitchRoll().html({ on: false })).toContain('listening for chords...');
+  });
+});
+
+describe('PitchRoll ramp (code review, PR #2)', () => {
+  it('scales energy to the ramp it was given', () => {
+    const roll = new PitchRoll({ cols: 1, ramp: ' .o@', rand: () => 0.5, decay: 0 });
+    roll.cols[0][0] = 0.3;
+    expect(roll.html({ on: false }).split('\n')[11]).toContain('│.│');
   });
 });

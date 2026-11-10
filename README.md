@@ -28,23 +28,31 @@ Read [docs/patterns.md](docs/patterns.md) for what each pattern is for, its shap
 import { BeatClock, CodeView, Synth, Typewriter, beatGridHtml, line, plain, steps16 } from '@2lab.ai/beat-ui';
 
 const KICK = 'x...x...x...x...';
-const synth = new Synth();
 const tw = new Typewriter(['tempo', 'kick']);
 const view = new CodeView(document.getElementById('code')!, tw, ['tempo', 'kick', '[grid]']);
 tw.set([plain('tempo', 'setcpm(124/4)'), steps16(line('kick').t('kick: s('), KICK, 'bd').t(')').build()]);
 
-const play = { on: true, bar: 0, step: 0 };
-const clock = new BeatClock<{ t: number; bar: number; step: number }>(synth.ctx, { bpm: 124 }, (s, push) => {
-  if (KICK[s.step] === 'x') synth.kick(s.t);
-  push(s);
+const play = { on: false, bar: 0, step: 0 };
+let synth: Synth | null = null;
+let clock: BeatClock<{ t: number; bar: number; step: number }> | null = null;
+
+// browsers start audio only from a user gesture: create the AudioContext in the click
+document.getElementById('play')!.addEventListener('click', () => {
+  if (synth) return;
+  const sy = (synth = new Synth());
+  clock = new BeatClock(sy.ctx, { bpm: 124 }, (s, push) => {
+    if (KICK[s.step] === 'x') sy.kick(s.t);
+    push(s);
+  });
+  clock.start();
+  play.on = true;
 });
-clock.start();
 
 let last = performance.now();
 requestAnimationFrame(function frame(now) {
   tw.update((now - last) / 1000); // real time, not the physics step
   last = now;
-  for (const e of clock.drain(synth.ctx.currentTime)) Object.assign(play, e);
+  if (synth && clock) for (const e of clock.drain(synth.ctx.currentTime)) Object.assign(play, e);
   view.render(play);
   view.slot('grid').innerHTML = beatGridHtml({ ...play, rows: [{ label: 'bd', pattern: KICK }] });
   requestAnimationFrame(frame);
