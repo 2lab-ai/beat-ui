@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>@2lab.ai/beat-ui</title>
+<style>
+  body { margin: 0; background: #f4fbfb; color: #101414; font: 16px/1.55 "JetBrains Mono", "SF Mono", ui-monospace, Menlo, monospace; }
+  main { max-width: 760px; margin: 0 auto; padding: 56px 24px; }
+  h1 { font-size: 1.6em; margin: 0 0 .2em; }
+  p.lead { color: #4b5c5c; margin: 0 0 2em; }
+  a.card { display: block; text-decoration: none; color: inherit; border: 1.5px solid #101414; padding: 18px 20px; margin: 0 0 14px; background: #fff; }
+  a.card:hover { box-shadow: 5px 5px 0 #101414; }
+  a.card b { display: block; font-size: 1.1em; }
+  ol { padding-left: 1.4em; color: #2b3535; }
+</style>
+</head>
+<body>
+<main>
+  <h1>@2lab.ai/beat-ui</h1>
+  <p class="lead">Beat-synced live-code visuals as zero-dependency TypeScript patterns.</p>
+  <a class="card" href="./reef/"><b>reef</b>A beat writes its own Strudel code while three ASCII sharks circle a float and hunt on the drop. Space · D · Z.</a>
+  <a class="card" href="./minimal/"><b>minimal</b>A two-section beat, its code typing itself, and the beat grid — 70 lines.</a>
+  <h2>The patterns</h2>
+  <ol>
+    <li>One clock for sound and picture (BeatClock)</li>
+    <li>The score is the single source of truth (arrange, patterns)</li>
+    <li>Code text with token ranges (LineBuilder)</li>
+    <li>A typewriter that edits like a person (Typewriter, CodeView)</li>
+    <li>The beat grid (beatGridHtml)</li>
+    <li>The pitch roll (PitchRoll)</li>
+    <li>A canvas drawn in cells (cellGrid, paintWater, causticNet)</li>
+    <li>A spine creature (makeSpine, moveSpine, rasterSpine)</li>
+    <li>A bait ball (swimSwarm)</li>
+    <li>The drop and a hunt that answers it (DropState, steerHunter)</li>
+    <li>A drum machine in plain WebAudio (Synth)</li>
+    <li>Receipts: the page says what it shows, in numbers (exposeReceipts)</li>
+  </ol>
+</main>
+</body>
+</html>
