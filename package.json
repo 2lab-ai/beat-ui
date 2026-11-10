@@ -9,6 +9,10 @@
     "url": "git+https://github.com/2lab-ai/beat-ui.git"
   },
   "homepage": "https://2lab.ai/beat-ui",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "files": [
     "dist",
     "README.md",
