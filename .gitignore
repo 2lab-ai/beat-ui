@@ -1,0 +1,9 @@
+node_modules
+dist
+site-dist
+.vercel
+*.log
+.DS_Store
+.env*
+*.tgz
+receipts-raw
