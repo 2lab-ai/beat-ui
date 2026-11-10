@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>reef — @2lab.ai/beat-ui</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background: #0c1315; overflow: hidden; }
+  body { display: flex; align-items: center; justify-content: center;
+    font-family: "JetBrains Mono", "SF Mono", ui-monospace, Menlo, Consolas, monospace; }
+  #stage { position: relative; overflow: hidden; background: #70c8d0; --u: 5.4px; }
+  #sea { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  #code { position: absolute; left: 9.3%; top: 5.2%; right: 1.5%; font-size: calc(var(--u) * 2.82);
+    line-height: 1.3; color: #101414; transition: opacity .35s ease; }
+  #code.hidden { opacity: 0; }
+  .ln { min-height: 0; }
+  .row { display: block; width: fit-content; max-width: 100%; white-space: pre; overflow: hidden;
+    text-overflow: ellipsis; background: rgba(238, 252, 251, .64); padding: 0 .16em; margin-left: -.16em;
+    margin-bottom: .3em; transition: background-color .25s ease; }
+  .row.land { background: rgba(255, 255, 255, .97); }
+  .cm { color: #7c9395; }
+  .tok { box-shadow: inset 0 0 0 1.5px #101414; border-radius: 3px; }
+  .sl { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: .2em; }
+  .caret { background: #101414; color: #f4fbfb; }
+  .gap { height: .45em; }
+  .wid { display: inline-block; font-size: .6em; line-height: 1.16; white-space: pre; color: #2b3535;
+    background: rgba(232, 248, 247, .8); border: 1px solid rgba(16, 20, 20, .3); padding: .5em .8em .4em;
+    margin: .05em 0 .75em; }
+  .wid .h { color: #101414; }
+  .wid .g { color: #a7bcbc; }
+  .wid .ph { color: #101414; background: #101414; }
+  .wid .ft { color: #7f9696; }
+  .wid .lab { background: #101414; color: #f4fbfb; }
+  #start { position: absolute; left: 50%; top: 52%; transform: translate(-50%, -50%); width: 80%;
+    background: #f4fbfb; border: 1.5px solid #101414; box-shadow: calc(var(--u) * 1.1) calc(var(--u) * 1.1) 0 rgba(16, 20, 20, .85);
+    padding: calc(var(--u) * 4.4); font-size: calc(var(--u) * 2.7); color: #101414; }
+  #start h1 { font-size: 1.5em; font-weight: 700; letter-spacing: -.01em; }
+  #start p { color: #4b5c5c; margin-top: .5em; line-height: 1.45; }
+  #start button { display: block; width: 100%; font: inherit; font-size: 1.1em; text-align: left; cursor: pointer;
+    padding: .75em .9em; margin: 1.2em 0 .5em; background: #101414; color: #f4fbfb; border: 0; }
+  #start button:focus-visible { outline: 3px solid #f2b705; outline-offset: 2px; }
+  #start.gone { display: none; }
+  #hint { position: absolute; left: 0; right: 0; bottom: 1.1%; text-align: center; font-size: calc(var(--u) * 2.05);
+    color: rgba(16, 20, 20, .55); }
+  #hint a { color: inherit; }
+  @media (prefers-reduced-motion: reduce) { .row, #code { transition: none; } }
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="sea" aria-label="An ocean seen from above, drawn in letters: three sharks circle a float, small fish around it"></canvas>
+  <div id="code" aria-live="off"></div>
+  <div id="start" role="dialog" aria-label="Start">
+    <h1>reef beat</h1>
+    <p>turns a beat into live code, and the sharks hunt on the drop</p>
+    <button id="go">▶ hear it on a demo song</button>
+    <p>a built-in beat plays and its code writes itself — no mic, no account</p>
+  </div>
+  <div id="hint">space ▶/❚❚ · D drop · Z hide code · <a href="../">beat-ui</a></div>
+</div>
+<script type="module" src="./main.ts"></script>
+</body>
+</html>

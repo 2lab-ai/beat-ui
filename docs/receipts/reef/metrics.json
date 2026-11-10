@@ -1,0 +1,936 @@
+{
+  "url": "/beat-ui/reef/",
+  "errors": [],
+  "log": [
+    {
+      "shot": "s1-idle",
+      "note": "S1: first screen before play",
+      "at": "2026-11-10T04:04:07.634Z",
+      "state": {
+        "fps": 8.9,
+        "playing": false,
+        "section": "idle",
+        "bar": 1,
+        "step": 1,
+        "hunger": 0,
+        "dropK": 0,
+        "codeHidden": false,
+        "float": {
+          "x": 0.33,
+          "y": 0.87
+        },
+        "ball": {
+          "x": 0.3174,
+          "y": 0.8848,
+          "n": 36
+        },
+        "fishAlive": 36,
+        "fishEaten": 0,
+        "firstLand": null,
+        "ballSpread": 0.0864,
+        "sharks": [
+          {
+            "kind": "hammerhead",
+            "snout": {
+              "x": 0.4015,
+              "y": 0.5591
+            },
+            "speed": 0.0516,
+            "aimOffBallDeg": 49.5,
+            "distBall": 0.3363,
+            "sinceDrop": null
+          },
+          {
+            "kind": "blacktip",
+            "snout": {
+              "x": 0.2007,
+              "y": 0.7949
+            },
+            "speed": 0.0497,
+            "aimOffBallDeg": 68.1,
+            "distBall": 0.1473,
+            "sinceDrop": null
+          },
+          {
+            "kind": "zebra",
+            "snout": {
+              "x": 0.1766,
+              "y": 0.3383
+            },
+            "speed": 0.0531,
+            "aimOffBallDeg": 100.2,
+            "distBall": 0.5643,
+            "sinceDrop": null
+          }
+        ],
+        "code": [
+          "// listening: nothing yet",
+          "// setcpm(?)  finding the beat...",
+          "// const scale = \"?\"",
+          "// kick: s(\"bd\").bank(\"RolandTR909\")",
+          "// clap: s(\"cp\").bank(\"RolandTR909\").room(.2)",
+          "// hhc: s(\"hh\").bank(\"RolandTR909\").gain(.5)",
+          "// hho: s(\"oh\").bank(\"RolandTR909\").gain(.4)",
+          "// bassline: note(\"~\").s(\"sawtooth\")",
+          "// chords: chord(\"~\").voicing()",
+          "// vox: s(\"vox\").slice(16, \"0\").clip(1)"
+        ],
+        "codeRect": {
+          "x": 50.21875,
+          "y": 49.90625,
+          "w": 481.6875,
+          "h": 497.3125,
+          "stageW": 540,
+          "stageH": 960,
+          "opacity": "1"
+        }
+      }
+    },
+    {
+      "probe": "first-bar (0.9 s after click)",
+      "state": {
+        "fps": 3.8,
+        "playing": true,
+        "section": "intro",
+        "bar": 1,
+        "step": 9,
+        "hunger": 0,
+        "dropK": 0,
+        "codeHidden": false,
+        "float": {
+          "x": 0.33,
+          "y": 0.87
+        },
+        "ball": {
+          "x": 0.3177,
+          "y": 0.9088,
+          "n": 36
+        },
+        "fishAlive": 36,
+        "fishEaten": 0,
+        "firstLand": {
+          "bar": 1,
+          "step": 1
+        },
+        "ballSpread": 0.1012,
+        "sharks": [
+          {
+            "kind": "hammerhead",
+            "snout": {
+              "x": 0.3559,
+              "y": 0.608
+            },
+            "speed": 0.0567,
+            "aimOffBallDeg": 16.3,
+            "distBall": 0.3033,
+            "sinceDrop": null
+          },
+          {
+            "kind": "blacktip",
+            "snout": {
+              "x": 0.1626,
+              "y": 0.8455
+            },
+            "speed": 0.0534,
+            "aimOffBallDeg": 124.3,
+            "distBall": 0.1676,
+            "sinceDrop": null
+          },
+          {
+            "kind": "zebra",
+            "snout": {
+              "x": 0.1061,
+              "y": 0.3395
+            },
+            "speed": 0.0593,
+            "aimOffBallDeg": 95.8,
+            "distBall": 0.6074,
+            "sinceDrop": null
+          }
+        ],
+        "code": [
+          "x = demo(\"reef_beat\")",
+          "setcpm(140/4)",
+          "const sc\"",
+          "// kick: s(\"bd\").bank(\"RolandTR909\")",
+          "// clap: s(\"cp\").bank(\"RolandTR909\").room(.2)",
+          "// hhc: s(\"hh\").bank(\"RolandTR909\").gain(.5)",
+          "// hho: s(\"oh\").bank(\"RolandTR909\").gain(.4)",
+          "// bassline: note(\"~\").s(\"sawtooth\")",
+          "// chords: chord(\"~\").voicing()",
+          "// vox: s(\"vox\").slice(16, \"0\").clip(1)"
+        ],
+        "codeRect": {
+          "x": 50.21875,
+          "y": 49.90625,
+          "w": 481.6875,
+          "h": 497.3125,
+          "stageW": 540,
+          "stageH": 960,
+          "opacity": "1"
+        }
+      }
+    },
+    {
+      "shot": "s2-playing",
+      "note": "S2: ~2.6 s after \"hear it on a demo song\"",
+      "at": "2026-11-10T04:04:16.080Z",
+      "state": {
+        "fps": 17.5,
+        "playing": true,
+        "section": "groove",
+        "bar": 3,
+        "step": 9,
+        "hunger": 0,
+        "dropK": 0,
+        "codeHidden": false,
+        "float": {
+          "x": 0.33,
+          "y": 0.87
+        },
+        "ball": {
+          "x": 0.3163,
+          "y": 0.9097,
+          "n": 36
+        },
+        "fishAlive": 36,
+        "fishEaten": 0,
+        "firstLand": {
+          "bar": 1,
+          "step": 1
+        },
+        "ballSpread": 0.0947,
+        "sharks": [
+          {
+            "kind": "hammerhead",
+            "snout": {
+              "x": 0.3482,
+              "y": 0.6671
+            },
+            "speed": 0.0642,
+            "aimOffBallDeg": 14.3,
+            "distBall": 0.2447,
+            "sinceDrop": null
+          },
+          {
+            "kind": "blacktip",
+            "snout": {
+              "x": 0.1091,
+              "y": 0.8622
+            },
+            "speed": 0.0603,
+            "aimOffBallDeg": 164,
+            "distBall": 0.2126,
+            "sinceDrop": null
+          },
+          {
+            "kind": "zebra",
+            "snout": {
+              "x": 0.0524,
+              "y": 0.3714
+            },
+            "speed": 0.0673,
+            "aimOffBallDeg": 71.2,
+            "distBall": 0.5995,
+            "sinceDrop": null
+          }
+        ],
+        "code": [
+          "x = demo(\"reef_beat\")",
+          "setcpm(140/4)",
+          "const scale = \"Ab:minor\"",
+          "kick: s(\"[bd ~ ~ ~] [bd ~ ~ ~] [bd ~ ~ ~] [bd ~ ~ ~]\")\n  .bank(\"RolandTR909\")",
+          "clap: s(\"~ cp ~ cp\").bank(\"RolandTR909\")\n  .room(.2)",
+          "// hhc: s(\"hh\").bank(\"RolandTR909\").gain(.5)",
+          "hho: s(\"~ oh ~.gain(.4)",
+          "// bassline: note(\"~\").s(\"sawtooth\")",
+          "// chords: chord(\"~\").voicing()",
+          "// vox: s(\"vox\").slice(16, \"0\").clip(1)"
+        ],
+        "codeRect": {
+          "x": 50.21875,
+          "y": 49.90625,
+          "w": 481.6875,
+          "h": 546.03125,
+          "stageW": 540,
+          "stageH": 960,
+          "opacity": "1"
+        }
+      }
+    },
+    {
+      "probe": "groove, bar 4 (bait-ball baseline)",
+      "state": {
+        "fps": 7.6,
+        "playing": true,
+        "section": "groove",
+        "bar": 4,
+        "step": 8,
+        "hunger": 0,
+        "dropK": 0,
+        "codeHidden": false,
+        "float": {
+          "x": 0.33,
+          "y": 0.87
+        },
+        "ball": {
+          "x": 0.3046,
+          "y": 0.9082,
+          "n": 36
+        },
+        "fishAlive": 36,
+        "fishEaten": 0,
+        "firstLand": {
+          "bar": 1,
+          "step": 1
+        },
+        "ballSpread": 0.0996,
+        "sharks": [
+          {
+            "kind": "hammerhead",
+            "snout": {
+              "x": 0.3598,
+              "y": 0.7049
+            },
+            "speed": 0.0667,
+            "aimOffBallDeg": 40.9,
+            "distBall": 0.2107,
+            "sinceDrop": null
+          },
+          {
+            "kind": "blacktip",
+            "snout": {
+              "x": 0.0722,
+              "y": 0.8576
+            },
+            "speed": 0.0627,
+            "aimOffBallDeg": 176.5,
+            "distBall": 0.2378,
+            "sinceDrop": null
+          },
+          {
+            "kind": "zebra",
+            "snout": {
+              "x": 0.0287,
+              "y": 0.4054
+            },
+            "speed": 0.07,
+            "aimOffBallDeg": 55,
+            "distBall": 0.5735,
+            "sinceDrop": null
+          }
+        ],
+        "code": [
+          "x = demo(\"reef_beat\")",
+          "setcpm(140/4)",
+          "const scale = \"Ab:minor\"",
+          "kick: s(\"[bd ~ ~ ~] [bd ~ ~ ~] [bd ~ ~ ~] [bd ~ ~ ~]\")\n  .bank(\"RolandTR909\")",
+          "clap: s(\"~ cp ~ cp\").bank(\"RolandTR909\")\n  .room(.2)",
+          "// hhc: s(\"hh\").bank(\"RolandTR909\").gain(.5)",
+          "hho: s(\"~ oh ~ oh ~ oh ~ oh\").bank(\"RolandTR909\")\n  .gain(.4)",
+          "bassline: note(\"<c#3 ab2 b2 ab2>\").segment(8)\n  .s(\"sawtooth\").lpf(slider(#, 100, 4000))",
+          "// chords: chord(\"~\").voicing()",
+          "// vox: s(\"vox\").slice(16, \"0\").clip(1)"
+        ],
+        "codeRect": {
+          "x": 50.21875,
+          "y": 49.90625,
+          "w": 481.6875,
+          "h": 594.75,
+          "stageW": 540,
+          "stageH": 960,
+          "opacity": "1"
+        }
+      }
+    },
+    {
+      "shot": "s3-breakdown",
+      "note": "S3: breakdown, bar 7",
+      "at": "2026-11-10T04:04:21.741Z",
+      "state": {
+        "fps": 9.8,
+        "playing": true,
+        "section": "breakdown",
+        "bar": 7,
+        "step": 2,
+        "hunger": 0,
+        "dropK": 0,
+        "codeHidden": false,
+        "float": {
+          "x": 0.33,
+          "y": 0.87
+        },
+        "ball": {
+          "x": 0.3382,
+          "y": 0.8439,
+          "n": 36
+        },
+        "fishAlive": 36,
+        "fishEaten": 0,
+        "firstLand": {
+          "bar": 1,
+          "step": 1
+        },
+        "ballSpread": 0.0539,
+        "sharks": [
+          {
+            "kind": "hammerhead",
+            "snout": {
+              "x": 0.4588,
+              "y": 0.7826
+            },
+            "speed": 0.0542,
+            "aimOffBallDeg": 112.8,
+            "distBall": 0.1353,
+            "sinceDrop": null
+          },
+          {
+            "kind": "blacktip",
+            "snout": {
+              "x": -0.003,
+              "y": 0.7718
+            },
+            "speed": 0.0508,
+            "aimOffBallDeg": 107.3,
+            "distBall": 0.3488,
+            "sinceDrop": null
+          },
+          {
+            "kind": "zebra",
+            "snout": {
+              "x": 0.0429,
+              "y": 0.5326
+            },
+            "speed": 0.0568,
+            "aimOffBallDeg": 7.6,
+            "distBall": 0.429,
+            "sinceDrop": null
+          }
+        ],
+        "code": [
+          "x = demo(\"reef_beat\")",
+          "setcpm(140/4)  // breakdown",
+          "const scale = \"Ab:minor\"",
+          "// kick: s(\"bd\").bank(\"RolandTR909\")",
+          "// clap: s(\"cp\").bank(\"RolandTR909\").room(.2)",
+          "// hhc: s(\"hh\").bank(\"RolandTR909\").gain(.5)",
+          "hho: s(\"~ oh ~ oh ~ oh ~ oh\").bank(\"RolandTR909\")\n  .gain(.4)",
+          "bassline: note(\"<c#3 ab2 b2 ab2>\").segment(8)\n  .s(\"sawtooth\").lpf(slider(#, 100, 4000))",
+          "chords: chord(\"<C#m Abm B Abm>\").voicing()\n  .s(\"supersaw\").lpf(slider(#, 200, 9000))",
+          "vox: s(\"vox\").slice(16, \"9 ~ 6 2 ~ 1 4 ~\")\n  .clip(1)"
+        ],
+        "codeRect": {
+          "x": 50.21875,
+          "y": 49.90625,
+          "w": 481.6875,
+          "h": 594.75,
+          "stageW": 540,
+          "stageH": 960,
+          "opacity": "1"
+        }
+      }
+    },
+    {
+      "probe": "pre-drop",
+      "state": {
+        "fps": 10.4,
+        "playing": true,
+        "section": "breakdown",
+        "bar": 8,
+        "step": 9,
+        "hunger": 0,
+        "dropK": 0,
+        "codeHidden": false,
+        "float": {
+          "x": 0.33,
+          "y": 0.87
+        },
+        "ball": {
+          "x": 0.3591,
+          "y": 0.8892,
+          "n": 36
+        },
+        "fishAlive": 36,
+        "fishEaten": 0,
+        "firstLand": {
+          "bar": 1,
+          "step": 1
+        },
+        "ballSpread": 0.0687,
+        "sharks": [
+          {
+            "kind": "hammerhead",
+            "snout": {
+              "x": 0.4903,
+              "y": 0.8358
+            },
+            "speed": 0.053,
+            "aimOffBallDeg": 80.5,
+            "distBall": 0.1416,
+            "sinceDrop": null
+          },
+          {
+            "kind": "blacktip",
+            "snout": {
+              "x": 0.0127,
+              "y": 0.7161
+            },
+            "speed": 0.0498,
+            "aimOffBallDeg": 82.2,
+            "distBall": 0.3872,
+            "sinceDrop": null
+          },
+          {
+            "kind": "zebra",
+            "snout": {
+              "x": 0.0956,
+              "y": 0.5707
+            },
+            "speed": 0.0557,
+            "aimOffBallDeg": 31.3,
+            "distBall": 0.4134,
+            "sinceDrop": null
+          }
+        ],
+        "code": [
+          "x = demo(\"reef_beat\")",
+          "setcpm(140/4)  // breakdown",
+          "const scale = \"Ab:minor\"",
+          "// kick: s(\"bd\").bank(\"RolandTR909\")",
+          "// clap: s(\"cp\").bank(\"RolandTR909\").room(.2)",
+          "// hhc: s(\"hh\").bank(\"RolandTR909\").gain(.5)",
+          "hho: s(\"~ oh ~ oh ~ oh ~ oh\").bank(\"RolandTR909\")\n  .gain(.4)",
+          "bassline: note(\"<c#3 ab2 b2 ab2>\").segment(8)\n  .s(\"sawtooth\").lpf(slider(#, 100, 4000))",
+          "chords: chord(\"<C#m Abm B Abm>\").voicing()\n  .s(\"supersaw\").lpf(slider(#, 200, 9000))",
+          "vox: s(\"vox\").slice(16, \"9 ~ 6 2 ~ 1 4 ~\")\n  .clip(1)"
+        ],
+        "codeRect": {
+          "x": 50.21875,
+          "y": 49.90625,
+          "w": 481.6875,
+          "h": 594.75,
+          "stageW": 540,
+          "stageH": 960,
+          "opacity": "1"
+        }
+      }
+    },
+    {
+      "shot": "s4-drop",
+      "note": "S4: 0.9 s after the drop (bar 9)",
+      "at": "2026-11-10T04:04:26.130Z",
+      "state": {
+        "fps": 11,
+        "playing": true,
+        "section": "drop",
+        "bar": 9,
+        "step": 12,
+        "hunger": 0.905,
+        "dropK": 0.8218,
+        "codeHidden": false,
+        "float": {
+          "x": 0.33,
+          "y": 0.87
+        },
+        "ball": {
+          "x": 0.2967,
+          "y": 0.9633,
+          "n": 36
+        },
+        "fishAlive": 36,
+        "fishEaten": 0,
+        "firstLand": {
+          "bar": 1,
+          "step": 1
+        },
+        "ballSpread": 0.1974,
+        "sharks": [
+          {
+            "kind": "hammerhead",
+            "snout": {
+              "x": 0.3637,
+              "y": 0.9521
+            },
+            "speed": 0.4293,
+            "aimOffBallDeg": 11.4,
+            "distBall": 0.0679,
+            "sinceDrop": {
+              "distAtDrop": 0.1597,
+              "closest": 0.0679,
+              "speedAtDrop": 0.0529,
+              "topSpeed": 0.4239
+            }
+          },
+          {
+            "kind": "blacktip",
+            "snout": {
+              "x": 0.1587,
+              "y": 0.7111
+            },
+            "speed": 0.3338,
+            "aimOffBallDeg": 22.7,
+            "distBall": 0.2875,
+            "sinceDrop": {
+              "distAtDrop": 0.3694,
+              "closest": 0.2875,
+              "speedAtDrop": 0.0497,
+              "topSpeed": 0.3317
+            }
+          },
+          {
+            "kind": "zebra",
+            "snout": {
+              "x": 0.2299,
+              "y": 0.6836
+            },
+            "speed": 0.3756,
+            "aimOffBallDeg": 17.6,
+            "distBall": 0.2875,
+            "sinceDrop": {
+              "distAtDrop": 0.391,
+              "closest": 0.2875,
+              "speedAtDrop": 0.0555,
+              "topSpeed": 0.3721
+            }
+          }
+        ],
+        "code": [
+          "x = demo(\"reef_beat\")",
+          "setcpm(140/4)  // drop",
+          "const scale = \"Ab:minor\"",
+          "kick: s(\"[bd ~ ~ ~] [bd ~ ~ bd] [~ ~ bd ~] [bd ~ ~ ~]\")\n  .bank(\"RolandTR909\")",
+          "clap: s(\"~ cp ~ cp\").bank.room(.2)",
+          "// hhc: s(\"hh\").bank(\"RolandTR909\").gain(.5)",
+          "hho: s(\"~ oh ~ oh ~ oh ~ oh\").bank(\"RolandTR909\")\n  .gain(.4)",
+          "bassline: note(\"<c#3 ab2 b2 ab2>\").segment(8)\n  .s(\"sawtooth\").lpf(slider(#, 100, 4000))",
+          "chords: chord(\"<C#m Abm B Abm>\").voicing()\n  .s(\"supersaw\").lpf(slider(#, 200, 9000))",
+          "vox: s(\"vox\").slice(16, \"9 ~ 6 2 ~ 1 4 ~\")\n  .clip(1)"
+        ],
+        "codeRect": {
+          "x": 50.21875,
+          "y": 49.90625,
+          "w": 481.6875,
+          "h": 619.109375,
+          "stageW": 540,
+          "stageH": 960,
+          "opacity": "1"
+        }
+      }
+    },
+    {
+      "probe": "pre-D-key",
+      "state": {
+        "fps": 9.8,
+        "playing": true,
+        "section": "drop",
+        "bar": 16,
+        "step": 6,
+        "hunger": 0.0351,
+        "dropK": 0,
+        "codeHidden": false,
+        "float": {
+          "x": 0.33,
+          "y": 0.87
+        },
+        "ball": {
+          "x": 0.3741,
+          "y": 0.9289,
+          "n": 36
+        },
+        "fishAlive": 36,
+        "fishEaten": 0,
+        "firstLand": {
+          "bar": 1,
+          "step": 1
+        },
+        "ballSpread": 0.1419,
+        "sharks": [
+          {
+            "kind": "hammerhead",
+            "snout": {
+              "x": 0.4842,
+              "y": 0.9978
+            },
+            "speed": 0.0877,
+            "aimOffBallDeg": 165.5,
+            "distBall": 0.1299,
+            "sinceDrop": {
+              "distAtDrop": 0.1597,
+              "closest": 0.0318,
+              "speedAtDrop": 0.0529,
+              "topSpeed": 0.4363
+            }
+          },
+          {
+            "kind": "blacktip",
+            "snout": {
+              "x": 0.1483,
+              "y": 1.0875
+            },
+            "speed": 0.0809,
+            "aimOffBallDeg": 124.3,
+            "distBall": 0.2759,
+            "sinceDrop": {
+              "distAtDrop": 0.3694,
+              "closest": 0.029,
+              "speedAtDrop": 0.0497,
+              "topSpeed": 0.4018
+            }
+          },
+          {
+            "kind": "zebra",
+            "snout": {
+              "x": 0.4896,
+              "y": 0.5153
+            },
+            "speed": 0.0941,
+            "aimOffBallDeg": 168.2,
+            "distBall": 0.4294,
+            "sinceDrop": {
+              "distAtDrop": 0.391,
+              "closest": 0.0192,
+              "speedAtDrop": 0.0555,
+              "topSpeed": 0.47
+            }
+          }
+        ],
+        "code": [
+          "x = demo(\"reef_beat\")",
+          "setcpm(140/4)  // drop",
+          "const scale = \"Ab:minor\"",
+          "kick: s(\"[bd ~ ~ ~] [bd ~ ~ bd] [~ ~ bd ~] [bd ~ ~ ~]\")\n  .bank(\"RolandTR909\")",
+          "clap: s(\"~ cp ~ cp\").bank(\"RolandTR909\")\n  .room(.2)",
+          "hhc: s(\"hh*8\").bank(\"RolandTR909\").gain(1)",
+          "hho: s(\"~ oh ~ oh ~ oh ~ oh\").bank(\"RolandTR909\")\n  .gain(.4)",
+          "bassline: note(\"<c#3 ab2 b2 ab2>\").segment(8)\n  .s(\"sawtooth\").lpf(slider(#, 100, 4000))",
+          "chords: chord(\"<C#m Abm B Abm>\").voicing()\n  .s(\"supersaw\").lpf(slider(#, 200, 9000))",
+          "vox: s(\"vox\").slice(16, \"9 ~ ~ ~ 6 ~ 4 2\")\n  .clip(1)"
+        ],
+        "codeRect": {
+          "x": 50.21875,
+          "y": 49.90625,
+          "w": 481.6875,
+          "h": 643.46875,
+          "stageW": 540,
+          "stageH": 960,
+          "opacity": "1"
+        }
+      }
+    },
+    {
+      "shot": "s5-dkey",
+      "note": "S5: 0.8 s after pressing D",
+      "at": "2026-11-10T04:04:38.961Z",
+      "state": {
+        "fps": 10.8,
+        "playing": true,
+        "section": "drop",
+        "bar": 16,
+        "step": 16,
+        "hunger": 0.9275,
+        "dropK": 0.8641,
+        "codeHidden": false,
+        "float": {
+          "x": 0.33,
+          "y": 0.87
+        },
+        "ball": {
+          "x": 0.3737,
+          "y": 0.9335,
+          "n": 36
+        },
+        "fishAlive": 36,
+        "fishEaten": 0,
+        "firstLand": {
+          "bar": 1,
+          "step": 1
+        },
+        "ballSpread": 0.2008,
+        "sharks": [
+          {
+            "kind": "hammerhead",
+            "snout": {
+              "x": 0.5976,
+              "y": 0.9482
+            },
+            "speed": 0.3664,
+            "aimOffBallDeg": 122,
+            "distBall": 0.2244,
+            "sinceDrop": {
+              "distAtDrop": 0.1415,
+              "closest": 0.1409,
+              "speedAtDrop": 0.0859,
+              "topSpeed": 0.3649
+            }
+          },
+          {
+            "kind": "blacktip",
+            "snout": {
+              "x": 0.0975,
+              "y": 0.9968
+            },
+            "speed": 0.3048,
+            "aimOffBallDeg": 78.5,
+            "distBall": 0.2833,
+            "sinceDrop": {
+              "distAtDrop": 0.2769,
+              "closest": 0.2769,
+              "speedAtDrop": 0.0794,
+              "topSpeed": 0.3021
+            }
+          },
+          {
+            "kind": "zebra",
+            "snout": {
+              "x": 0.4272,
+              "y": 0.4158
+            },
+            "speed": 0.3414,
+            "aimOffBallDeg": 114.2,
+            "distBall": 0.5205,
+            "sinceDrop": {
+              "distAtDrop": 0.4368,
+              "closest": 0.4368,
+              "speedAtDrop": 0.092,
+              "topSpeed": 0.3385
+            }
+          }
+        ],
+        "code": [
+          "x = demo(\"reef_beat\")",
+          "setcpm(140/4)  // drop",
+          "const scale = \"Ab:minor\"",
+          "kick: s(\"[bd ~ ~ ~] [bd ~ ~ bd] [~ ~ bd ~] [bd ~ ~ ~]\")\n  .bank(\"RolandTR909\")",
+          "clap: s(\"~ cp ~ cp\").bank(\"RolandTR909\")\n  .room(.2)",
+          "hhc: s(\"hh*8\").bank(\"RolandTR909\").gain(1)",
+          "hho: s(\"~ oh ~ oh ~ oh ~ oh\").bank(\"RolandTR909\")\n  .gain(.4)",
+          "bassline: note(\"<c#3 ab2 b2 ab2>\").segment(8)\n  .s(\"sawtooth\").lpf(slider(#, 100, 4000))",
+          "chords: chord(\"<C#m Abm B Abm>\").voicing()\n  .s(\"supersaw\").lpf(slider(#, 200, 9000))",
+          "vox: s(\"vox\").slice(16, \"9 ~ ~ ~ 6 ~ 4 2\")\n  .clip(1)"
+        ],
+        "codeRect": {
+          "x": 50.21875,
+          "y": 49.90625,
+          "w": 481.6875,
+          "h": 643.46875,
+          "stageW": 540,
+          "stageH": 960,
+          "opacity": "1"
+        }
+      }
+    },
+    {
+      "shot": "s6-codehidden",
+      "note": "S6: 1.8 s after pressing Z",
+      "at": "2026-11-10T04:04:41.687Z",
+      "state": {
+        "fps": 18.2,
+        "playing": true,
+        "section": "breakdown",
+        "bar": 18,
+        "step": 15,
+        "hunger": 0.6737,
+        "dropK": 0.3883,
+        "codeHidden": true,
+        "float": {
+          "x": 0.2825,
+          "y": 0.5755
+        },
+        "ball": {
+          "x": 0.317,
+          "y": 0.8092,
+          "n": 36
+        },
+        "fishAlive": 36,
+        "fishEaten": 0,
+        "firstLand": {
+          "bar": 1,
+          "step": 1
+        },
+        "ballSpread": 0.2544,
+        "sharks": [
+          {
+            "kind": "hammerhead",
+            "snout": {
+              "x": 0.2941,
+              "y": 0.848
+            },
+            "speed": 0.2428,
+            "aimOffBallDeg": 106.8,
+            "distBall": 0.045,
+            "sinceDrop": {
+              "distAtDrop": 0.1415,
+              "closest": 0.0309,
+              "speedAtDrop": 0.0859,
+              "topSpeed": 0.3664
+            }
+          },
+          {
+            "kind": "blacktip",
+            "snout": {
+              "x": 0.3501,
+              "y": 0.7691
+            },
+            "speed": 0.1695,
+            "aimOffBallDeg": 130.3,
+            "distBall": 0.052,
+            "sinceDrop": {
+              "distAtDrop": 0.2769,
+              "closest": 0.0317,
+              "speedAtDrop": 0.0794,
+              "topSpeed": 0.3081
+            }
+          },
+          {
+            "kind": "zebra",
+            "snout": {
+              "x": 0.2614,
+              "y": 0.7479
+            },
+            "speed": 0.3246,
+            "aimOffBallDeg": 44.2,
+            "distBall": 0.0828,
+            "sinceDrop": {
+              "distAtDrop": 0.4368,
+              "closest": 0.0828,
+              "speedAtDrop": 0.092,
+              "topSpeed": 0.3419
+            }
+          }
+        ],
+        "code": [
+          "x = demo(\"reef_beat\")",
+          "setcpm(140/4)  // breakdown",
+          "const scale = \"Ab:minor\"",
+          "// kick: s(\"bd\").bank(\"RolandTR909\")",
+          "// clap: s(\"cp\").bank(\"RolandTR909\").room(.2)",
+          "// hhc: s(\"hh\").bank(\"RolandTR909\").gain(.5)",
+          "hho: s(\"~ oh ~ oh ~ oh ~ oh\").bank(\"RolandTR909\")\n  .gain(.4)",
+          "bassline: note(\"<c#3 ab2 b2 ab2>\").segment(8)\n  .s(\"sawtooth\").lpf(slider(#, 100, 4000))",
+          "chords: chord(\"<C#m Abm B Abm>\").voicing()\n  .s(\"supersaw\").lpf(slider(#, 200, 9000))",
+          "vox: s(\"vox\").slice(16, \"9 ~ 6 2 ~ 1 4 ~\")\n  .clip(1)"
+        ],
+        "codeRect": {
+          "x": 50.21875,
+          "y": 49.90625,
+          "w": 481.6875,
+          "h": 594.75,
+          "stageW": 540,
+          "stageH": 960,
+          "opacity": "0"
+        }
+      }
+    }
+  ],
+  "minimal": {
+    "lines": [
+      "setcpm(124/4)  // groove",
+      "kick: s(\"[bd ~ ~ ~] [bd ~ ~ ~] [bd ~ ~ ~] [bd ~ ~ ~]\")",
+      "hats: s(\"~ oh ~ oh ~ oh ~ oh\")",
+      "snare: s(\"~ sd ~ sd\")"
+    ],
+    "playhead": true,
+    "footer": "    bar 4 · step 5/16",
+    "errors": []
+  }
+}

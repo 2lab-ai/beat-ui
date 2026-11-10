@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build:site",
+  "outputDirectory": "site-dist",
+  "redirects": [
+    { "source": "/", "destination": "https://www.2lab.ai/beat-ui", "permanent": false },
+    { "source": "/((?!beat-ui$|beat-ui/).*)", "destination": "https://www.2lab.ai/beat-ui/$1", "permanent": false }
+  ],
+  "rewrites": [{ "source": "/beat-ui", "destination": "/beat-ui/index.html" }]
+}
